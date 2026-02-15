@@ -10,78 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #4cdadd;
-      --bg-1: #0f0f0f;
-      --bg-2: #1a1a1a;
-      --bg-3: #232323;
-      --text: #f5f5f5;
-      --muted: #b8b8b8;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Inter, sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at 30% -10%, rgba(76, 218, 221, 0.18), transparent 40%), var(--bg-1);
-      line-height: 1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1200px, 92%); margin: 0 auto; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(15, 15, 15, 0.93); backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
-    .brand img { width: 30px; height: 30px; }
-    .brand span { color: var(--primary); }
-    .nav-links { display: flex; gap: 26px; font-weight: 500; color: var(--muted); }
-    .nav-links a:hover { color: var(--primary); }
-    .hero { padding: 96px 0 64px; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.12; margin-bottom: 16px; max-width: 820px; }
-    .hero h1 span { color: var(--primary); }
-    .hero p { max-width: 760px; color: var(--muted); margin-bottom: 26px; }
-    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn { padding: 11px 22px; border-radius: 8px; font-weight: 700; border: 2px solid transparent; display: inline-block; transition: 0.25s ease; }
-    .btn.primary { background: var(--primary); color: #000; }
-    .btn.primary:hover { transform: translateY(-2px); }
-    .btn.ghost { border-color: var(--primary); color: var(--primary); }
-    .btn.ghost:hover { background: rgba(76, 218, 221, 0.1); }
-    section { padding: 74px 0; }
-    .section-title { margin-bottom: 26px; }
-    .section-title h2 { font-size: clamp(1.5rem, 3.5vw, 2.3rem); margin-bottom: 8px; }
-    .section-title p { color: var(--muted); max-width: 780px; }
-    .projects { background: var(--bg-2); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .project-card {
-      position: relative; border-radius: 14px; overflow: hidden; cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.08); background: #111; min-height: 220px;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 18px 30px rgba(0,0,0,.28); }
-    .project-card img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03); }
-    .project-overlay {
-      position: absolute; inset: auto 0 0 0; padding: 16px;
-      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2), transparent);
-    }
-    .project-overlay h3 { font-size: 1.15rem; margin-bottom: 4px; }
-    .project-overlay p { color: #d7d7d7; font-size: .9rem; }
-    .project-card.wide { grid-column: span 8; min-height: 300px; }
-    .project-card.tall { grid-column: span 4; min-height: 300px; }
-    .project-card.half { grid-column: span 6; min-height: 240px; }
-    .about-box { background: linear-gradient(140deg, rgba(76,218,221,.08), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 28px; }
-    .about-box p { color: var(--muted); }
-    .next-step { background: var(--bg-2); }
-    .next-box { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; background: var(--bg-3); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 26px; }
-    .next-box p { color: var(--muted); max-width: 680px; }
-    footer { border-top: 1px solid rgba(255,255,255,.06); padding: 28px 0; color: var(--muted); font-size: .92rem; }
-    @media (max-width: 860px) {
-      .nav-links { display: none; }
-      .project-card.wide, .project-card.tall, .project-card.half { grid-column: span 12; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -121,15 +50,15 @@
         </div>
 
         <div class="gallery">
-          <a class="project-card wide" href="project.html?project=nonna">
+          <a class="project-card wide" href="projects/mtv-ctrl.html">
             <img src="MTV Mockup .jpg" alt="MTV CTRL" />
             <div class="project-overlay">
-              <h3>MTV CTRL</h3>
-              <p>TV Ident & Branding</p>
+              <h3>NONNA PASTA</h3>
+              <p>Brand Identity + Packaging</p>
             </div>
           </a>
 
-          <a class="project-card tall" href="project.html?project=zenify">
+          <a class="project-card small" href="projects/zenify-drinks.html">
             <img src="RageElixir.jpg" alt="Zenify social media project" />
             <div class="project-overlay">
               <h3>ZENIFY DRINKS</h3>
@@ -137,7 +66,7 @@
             </div>
           </a>
 
-          <a class="project-card half" href="project.html?project=fireline">
+          <a class="project-card half" href="projects/fireline.html">
             <img src="Suspy - I Opened a Food Cart for 24 Hours !.jpg" alt="Fireline poster series" />
             <div class="project-overlay">
               <h3>FIRELINE</h3>
@@ -145,7 +74,7 @@
             </div>
           </a>
 
-          <a class="project-card half" href="project.html?project=pulse">
+          <a class="project-card half" href="projects/pulse.html">
             <img src="Pimpekk - We_re GOING to SPACE in Minecraft!.png" alt="Pulse campaign visuals" />
             <div class="project-overlay">
               <h3>PULSE</h3>
