@@ -19,12 +19,27 @@
       --text: #f5f5f5;
       --muted: #b8b8b8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Inter, sans-serif; color: var(--text); background: var(--bg-1); line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, 92%); margin: 0 auto; }
 
-    header { position: sticky; top: 0; z-index: 5; background: rgba(15,15,15,.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 30% -10%, rgba(76, 218, 221, 0.18), transparent 40%), var(--bg-1);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 15, 15, 0.93);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
     .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
     .brand img { width: 30px; height: 30px; }
@@ -32,37 +47,180 @@
     .nav-links { display: flex; gap: 26px; font-weight: 500; color: var(--muted); }
     .nav-links a:hover { color: var(--primary); }
 
-    .hero { padding: 96px 0 70px; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.15; margin-bottom: 18px; }
+    .hero { padding: 96px 0 64px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.12; margin-bottom: 16px; max-width: 820px; }
     .hero h1 span { color: var(--primary); }
     .hero p { max-width: 760px; color: var(--muted); margin-bottom: 26px; }
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn { padding: 11px 22px; border-radius: 8px; font-weight: 700; border: 2px solid transparent; display: inline-block; }
+
+    .btn {
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      display: inline-block;
+      transition: 0.25s ease;
+    }
+
     .btn.primary { background: var(--primary); color: #000; }
+    .btn.primary:hover { transform: translateY(-2px); }
     .btn.ghost { border-color: var(--primary); color: var(--primary); }
+    .btn.ghost:hover { background: rgba(76, 218, 221, 0.1); }
 
     section { padding: 74px 0; }
-    .section-title { margin-bottom: 30px; }
+    .section-title { margin-bottom: 26px; }
     .section-title h2 { font-size: clamp(1.5rem, 3.5vw, 2.3rem); margin-bottom: 8px; }
-    .section-title p { color: var(--muted); max-width: 760px; }
+    .section-title p { color: var(--muted); max-width: 780px; }
 
-    .projects { background: var(--bg-2); }
-    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .card { background: linear-gradient(160deg, rgba(76,218,221,.12), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); padding: 22px; border-radius: 14px; }
-    .card h3 { margin-bottom: 8px; font-size: 1.05rem; }
-    .card p { color: var(--muted); font-size: .95rem; }
-    .tag { display: inline-block; margin-top: 12px; font-size: .78rem; color: var(--primary); border: 1px solid rgba(76,218,221,.45); padding: 4px 10px; border-radius: 999px; }
+    .projects { background: var(--bg-2); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
 
-    .about { background: var(--bg-1); }
-    .about-box { background: var(--bg-3); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 28px; }
+    .project-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #111;
+      min-height: 220px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 30px rgba(0,0,0,.28);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.03);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 16px;
+      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2), transparent);
+    }
+
+    .project-overlay h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .project-overlay p { color: #d7d7d7; font-size: .9rem; }
+
+    .project-card.wide { grid-column: span 8; min-height: 300px; }
+    .project-card.tall { grid-column: span 4; min-height: 300px; }
+    .project-card.half { grid-column: span 6; min-height: 240px; }
+
+    .about-box {
+      background: linear-gradient(140deg, rgba(76,218,221,.08), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 28px;
+    }
     .about-box p { color: var(--muted); }
 
     .next-step { background: var(--bg-2); }
-    .next-box { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; background: var(--bg-3); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 26px; }
+    .next-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      background: var(--bg-3);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 26px;
+    }
     .next-box p { color: var(--muted); max-width: 680px; }
 
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 20;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-content {
+      width: min(1020px, 100%);
+      background: #141414;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,.42);
+    }
+
+    .modal-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0;
+    }
+
+    .modal-main-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-info { padding: 28px; }
+    .modal-info h3 { font-size: 1.7rem; margin-bottom: 10px; }
+    .modal-info p { color: var(--muted); margin-bottom: 16px; }
+    .meta-item { margin-bottom: 8px; font-size: .95rem; color: #e2e2e2; }
+    .meta-item span { color: var(--primary); font-weight: 600; margin-right: 6px; }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 14px;
+      background: #101010;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 26px;
+      right: 30px;
+      background: rgba(0,0,0,.75);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.25);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
     footer { border-top: 1px solid rgba(255,255,255,.06); padding: 28px 0; color: var(--muted); font-size: .92rem; }
-    @media (max-width: 720px){ .nav-links{display:none;} }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .project-card.wide, .project-card.tall, .project-card.half { grid-column: span 12; }
+      .modal-top { grid-template-columns: 1fr; }
+      .modal-main-image { height: 280px; }
+      .modal-gallery { grid-template-columns: 1fr; }
+      .modal-gallery img { height: 170px; }
+    }
   </style>
 </head>
 <body>
@@ -85,11 +243,11 @@
       <div class="container">
         <h1>I’m a <span>Graphic Designer</span> building clear, bold visual communication.</h1>
         <p>
-          Welcome to my main portfolio. Here you can see selected graphic design projects I made at university,
-          including branding systems, editorial layouts, posters, packaging, and campaign visuals.
+          Welcome to my main portfolio. Explore visual projects inspired by university work — now in a creative clickable gallery.
+          Click any project to open a detailed case-view.
         </p>
         <div class="hero-cta">
-          <a class="btn primary" href="#work">View University Work</a>
+          <a class="btn primary" href="#work">Explore Projects</a>
           <a class="btn ghost" href="thumbnails.html">Open Thumbnail Portfolio</a>
         </div>
       </div>
@@ -99,27 +257,53 @@
       <div class="container">
         <div class="section-title">
           <h2>University Graphic Design Projects</h2>
-          <p>Core projects that represent my process: research, concept development, visual system building, and polished execution.</p>
+          <p>Click a project tile to open details, scope, deliverables, and supporting visuals.</p>
         </div>
-        <div class="grid">
-          <article class="card"><h3>Urban Brew — Brand Identity</h3><p>Logo family, color system, typography pairings, and usage guidelines for a conceptual coffee brand.</p><span class="tag">Branding</span></article>
-          <article class="card"><h3>Type in Motion — Poster Series</h3><p>Three posters exploring rhythm, scale, and hierarchy for a university typography exhibition brief.</p><span class="tag">Print Design</span></article>
-          <article class="card"><h3>Frame — Editorial Spread</h3><p>A 12-page editorial layout using modular grid structures and image-led storytelling.</p><span class="tag">Editorial</span></article>
-          <article class="card"><h3>Natura — Packaging Concept</h3><p>Sustainable packaging proposal with dielines, mockups, and production-oriented specifications.</p><span class="tag">Packaging</span></article>
-          <article class="card"><h3>Mind Matters — Awareness Campaign</h3><p>Campaign visuals and social cutdowns designed for consistency across print and digital channels.</p><span class="tag">Campaign</span></article>
-          <article class="card"><h3>Signal — Motion Styleframes</h3><p>Styleframes and transition language for a short motion explainer in a clean contemporary style.</p><span class="tag">Motion</span></article>
+
+        <div class="gallery">
+          <article class="project-card wide" data-project="nonna">
+            <img src="Cash - Surviving on One Lucky Block Pillar in Minecraft.jpg" alt="Nonna packaging project" />
+            <div class="project-overlay">
+              <h3>NONNA PASTA</h3>
+              <p>Brand Identity + Packaging</p>
+            </div>
+          </article>
+
+          <article class="project-card tall" data-project="zenify">
+            <img src="RageElixir.jpg" alt="Zenify social media project" />
+            <div class="project-overlay">
+              <h3>ZENIFY DRINKS</h3>
+              <p>Social Media + Digital Campaign</p>
+            </div>
+          </article>
+
+          <article class="project-card half" data-project="fireline">
+            <img src="Suspy - I Opened a Food Cart for 24 Hours !.jpg" alt="Fireline poster series" />
+            <div class="project-overlay">
+              <h3>FIRELINE</h3>
+              <p>Poster + Editorial System</p>
+            </div>
+          </article>
+
+          <article class="project-card half" data-project="pulse">
+            <img src="Pimpekk - We_re GOING to SPACE in Minecraft!.png" alt="Pulse campaign visuals" />
+            <div class="project-overlay">
+              <h3>PULSE</h3>
+              <p>Campaign Visual Direction</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about">
       <div class="container">
         <div class="section-title">
           <h2>About</h2>
-          <p>Design is where concept and clarity meet. I care about work that looks strong and communicates even stronger.</p>
+          <p>Design is where concept and clarity meet. I focus on memorable visuals with strong structure and purpose.</p>
         </div>
         <div class="about-box">
-          <p>I’m building my portfolio through university projects and client-facing creative work. My goal is to create visuals that are memorable, structured, and useful — from brand systems to digital assets.</p>
+          <p>I’m building my portfolio through university projects and client-facing creative work. My goal is to create visuals that are expressive, clean, and strategically useful — from brand systems to digital assets.</p>
         </div>
       </div>
     </section>
@@ -129,7 +313,7 @@
         <div class="next-box">
           <div>
             <h2>Thumbnail Design is still here.</h2>
-            <p>Your previous website content is now kept as a separate page so visitors can still browse your thumbnail portfolio.</p>
+            <p>Your previous website content remains available as a dedicated page, so visitors can still browse your thumbnail portfolio.</p>
           </div>
           <a class="btn primary" href="thumbnails.html">Go to Thumbnail Portfolio</a>
         </div>
@@ -137,8 +321,155 @@
     </section>
   </main>
 
+  <div class="modal" id="project-modal" aria-hidden="true">
+    <button class="close-btn" id="modal-close" aria-label="Close project details">✕</button>
+    <div class="modal-content">
+      <div class="modal-top">
+        <img id="modal-main-image" class="modal-main-image" src="" alt="Selected project preview" />
+        <div class="modal-info">
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <div class="meta-item"><span>Role:</span><strong id="modal-role"></strong></div>
+          <div class="meta-item"><span>Date:</span><strong id="modal-date"></strong></div>
+          <div class="meta-item"><span>Scope:</span><strong id="modal-scope"></strong></div>
+          <div class="meta-item"><span>Deliverables:</span><strong id="modal-deliverables"></strong></div>
+        </div>
+      </div>
+      <div class="modal-gallery" id="modal-gallery"></div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">© Glacier Visions — Graphic Design Portfolio</div>
   </footer>
+
+  <script>
+    const projects = {
+      nonna: {
+        title: 'NONNA PASTA',
+        description: 'A playful pasta brand concept balancing tradition with bold contemporary color and typography.',
+        role: 'Visual Designer',
+        date: '2023',
+        scope: 'Brand Identity, Packaging, Merch',
+        deliverables: 'Packaging boxes, logo system, social assets',
+        mainImage: 'Cash - Surviving on One Lucky Block Pillar in Minecraft.jpg',
+        gallery: [
+          'Cash - Surviving One LUCKY Chunk in Minecraft!.jpg',
+          'Jakey - Este Prea _FRIG_ in Minecraft....jpg',
+          'Jelly and Ducky - DOGDAY is LIVING In Our ATTIC In Minecraft... (DO NOT WATCH ALONE!).jpg'
+        ]
+      },
+      zenify: {
+        title: 'ZENIFY DRINKS',
+        description: 'A digital-first visual campaign focused on social storytelling and clean product-centric content.',
+        role: 'Graphic Designer',
+        date: '2024',
+        scope: 'Social Media, UI Mockups, Campaign Design',
+        deliverables: 'IG feed system, ad creatives, brand posts',
+        mainImage: 'RageElixir.jpg',
+        gallery: [
+          'RageElixir -MAKING RAGEELIXIR A NEW ROBLOX ACCOUNT!.jpg',
+          'Pimpekk - TANK 1 LVL vs 9999999 LVL in Roblox!.jpg',
+          'Ghetarul - IS SHIN SONIC NOT AN EVIL MONSTER_! THE TRUTH on Roblox....jpg'
+        ]
+      },
+      fireline: {
+        title: 'FIRELINE',
+        description: 'An expressive print and editorial direction using aggressive diagonals, contrast, and layered texture.',
+        role: 'Art Director',
+        date: '2023',
+        scope: 'Poster System, Editorial Layout',
+        deliverables: 'Poster set, look-book pages, print mockups',
+        mainImage: 'Suspy - I Opened a Food Cart for 24 Hours !.jpg',
+        gallery: [
+          'Suspy - I Spend 24 Hours Blind folded!.jpg',
+          'Brianna - Tasting Rare Snacks and Drinks (Fan-Made).jpg',
+          'Mr. Cigvan - WE TOOK REVENGE ON KRAMPUS (Fan-Made).jpg'
+        ]
+      },
+      pulse: {
+        title: 'PULSE',
+        description: 'A campaign concept where motion-style compositions and high-contrast visuals drive attention.',
+        role: 'Graphic Designer',
+        date: '2024',
+        scope: 'Campaign Visuals, Motion Styleframes',
+        deliverables: 'Digital posters, social stories, concept frames',
+        mainImage: 'Pimpekk - We_re GOING to SPACE in Minecraft!.png',
+        gallery: [
+          'Pimpekk - I PRETEND TO BE A NOOB and then USE THE _REALISTIC COMMAND in Minecraft!.png',
+          'bouchaL - FORBIDDEN LOVE in Roblox Brookhaven!.jpg',
+          'bouchaL - I spent 3,546,879 CZK on the BIGGEST WATER SLIDE in Roblox!.jpg'
+        ]
+      }
+    };
+
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalRole = document.getElementById('modal-role');
+    const modalDate = document.getElementById('modal-date');
+    const modalScope = document.getElementById('modal-scope');
+    const modalDeliverables = document.getElementById('modal-deliverables');
+    const modalMainImage = document.getElementById('modal-main-image');
+    const modalGallery = document.getElementById('modal-gallery');
+
+    function openProjectModal(projectId) {
+      const project = projects[projectId];
+      if (!project) return;
+
+      modalTitle.textContent = project.title;
+      modalDescription.textContent = project.description;
+      modalRole.textContent = project.role;
+      modalDate.textContent = project.date;
+      modalScope.textContent = project.scope;
+      modalDeliverables.textContent = project.deliverables;
+      modalMainImage.src = project.mainImage;
+      modalMainImage.alt = project.title + ' main image';
+
+      modalGallery.innerHTML = '';
+      project.gallery.forEach((imageSrc) => {
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.alt = project.title + ' detail image';
+        modalGallery.appendChild(img);
+      });
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.project-card').forEach((card) => {
+      card.addEventListener('click', () => openProjectModal(card.dataset.project));
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openProjectModal(card.dataset.project);
+        }
+      });
+    });
+
+    document.getElementById('modal-close').addEventListener('click', closeProjectModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('active')) {
+        closeProjectModal();
+      }
+    });
+  </script>
 </body>
 </html>
