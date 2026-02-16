@@ -99,8 +99,6 @@
   z-index: -1;
   opacity: 0.18;
 }
-}
-}
 .instagram-btn:hover {
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 6px 24px rgba(221,42,123,0.13);
