@@ -116,6 +116,9 @@ footer { border-top: 1px solid rgba(255,255,255,.06); padding: 28px 0; color: va
 .lead p { color: var(--muted); margin-bottom: 12px; max-width: 760px; }
 .overview { background: var(--bg-2); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 26px; margin-top: 100px; margin-bottom: 40px; }
 .overview h3 { font-size: 2rem; margin-bottom: 16px; }
+
+/* Improve contrast for white headings on light backgrounds */
+h3 { text-shadow: 0 1px 2px rgb(0, 0, 0); }
 .overview-item { margin-bottom: 10px; }
 .overview-item strong { color: #fff; }
 .hero-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; margin-top: 32px; }
