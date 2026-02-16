@@ -275,8 +275,21 @@ h3 { text-shadow: 0 1px 2px rgb(0, 0, 0); }
 .overview-item { margin-bottom: 10px; }
 .overview-item strong { color: #fff; }
 .hero-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; margin-top: 32px; }
-.hero-image { background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; overflow: hidden; min-height: 420px; display: flex; align-items: center; justify-content: center; }
+.hero-image { background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;   }
 .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Hero gallery layout modifiers
+   Usage:
+     <div class="hero-gallery grid-1-1">...</div>
+     <div class="hero-gallery grid-2-1">...</div>
+     <div class="hero-gallery grid-1-2">...</div>
+   Use `.span-full` on a child to make it span both columns. */
+.hero-gallery .grid-1-1 { grid-template-columns: 1fr; }
+.hero-gallery .grid-2-1 { grid-template-columns: 2fr 1fr; grid-auto-rows: auto; }
+.hero-gallery .grid-1-2 { grid-template-columns: 1fr 2fr; grid-auto-columns: auto; }
+.hero-gallery .span-full { grid-column: 1 / -1; }
+/* Make a child span two rows in a two-row layout */
+.hero-gallery .span-rows-2 { grid-row: span 2; }
 
 @media (max-width: 980px) {
   .hero-gallery { grid-template-columns: 1fr; gap: 22px 0; }
