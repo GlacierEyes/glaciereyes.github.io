@@ -7,20 +7,13 @@
    referencing the existing TTFs works immediately.
 */
 
+/* inter-regular - latin */
 @font-face {
+  font-display: swap;
   font-family: 'Inter';
-  src: url('/fonts/Inter-VariableFont_opsz,wght.woff') format('woff');
-  font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.woff') format('woff');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
 }
 
 :root {
