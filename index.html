@@ -22,6 +22,7 @@
         <a href="#contact">Contact</a>
         <a href="/thumbnails/">Thumbnail Design</a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
     </div>
   </header>
 
@@ -163,23 +164,35 @@
     <div class="container">© Glacier Visions. All Rights Reserved 2026.</div>
   </footer>
   <script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+              window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+          }
+          const navLinks = document.querySelector('.nav-links');
+          const mobileBtn = document.querySelector('.mobile-menu-btn');
+          if (navLinks && mobileBtn && navLinks.classList.contains('active')) {
+              navLinks.classList.remove('active');
+              mobileBtn.innerHTML = '☰';
+          }
+      });
     });
-  });
+
+    // Mobile menu toggle
+    (function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      if (!mobileMenuBtn || !navLinks) return;
+      mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+      });
+    })();
 </script>
 </body>
 </html>

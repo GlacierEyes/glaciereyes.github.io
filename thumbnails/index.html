@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glacier Visions | Thumbnail Portfolio</title>
     <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/fonts/fonts.css">
     <style>
         :root {
             --primary-color: #4cdadd;
@@ -78,64 +77,34 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .navbar {
+        /* Header styles aligned with main site */
+        .navbar, .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 16px 0;
         }
-        
-        .logo {
+
+        .brand, .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 700;
-            font-size: 24px;
+            font-weight: 800;
             color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
         }
-        
-        .logo span {
-            color: var(--primary-color);
-        }
-        
+
+        .brand span { color: var(--primary-color); }
+
         .logo-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-        
-        .nav-links a {
-            position: relative;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+
         
         .btn {
             display: inline-block;
@@ -168,14 +137,44 @@
             color: #000;
         }
         
+        /* Mobile menu styles */
         .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 24px;
-            cursor: pointer;
+        display: none;
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.45rem;
+        cursor: pointer;
+        padding: 8px 10px;
         }
+
+        .nav-links { display: flex; gap: 26px; font-weight: 500; color: var(--muted); }
+        .nav-links a:hover { color: var(--primary); }
+
+        @media (max-width: 980px) {
+        .mobile-menu-btn { display: block; }
+        .nav { position: relative; }
+        .nav-links {
+            display: none;
+            position: absolute;
+            background-color: var(--dark-bg-2);
+            top: calc(100% + 8px);
+            right: 12px;
+            background: var(--dark-bg-3);
+            padding: 12px 14px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+            flex-direction: column;
+            gap: 10px;
+            min-width: 180px;
+            z-index: 30;
+        }
+        .nav-links.active { display: flex; }
+        .nav-links a { display: block; padding: 8px 6px; border-radius: 8px; }
+        .nav-links a:hover { background: rgba(255,255,255,0.02); }
+        }
+        
+
 
         .hero {
             height: 100vh;
@@ -891,29 +890,6 @@
                 padding: 15px 0;
             }
             
-            .nav-links {
-                position: fixed;
-                top: 76px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 76px);
-                background: var(--dark-bg-2);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
             .hero h1 {
                 font-size: 2.8rem;
             }
@@ -1016,26 +992,24 @@
     <header id="header">
         <div class="container">
             <div class="navbar">
-                <a href="/" class="logo">
+                <a href="/" class="brand logo">
                     <div class="logo-icon"><img
                         src="/logo.svg"
                         alt="Glacier Visions logo"
                         height="34"
                         width="34" />
                       </div>
-                    <span>Glacier</span> Visions
+                    <div><span>Glacier</span> Visions</div>
                 </a>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#the-formula">The Formula</a></li>
-                    <li><a href="#see-the-work">See the Work</a></li>
-                    <li><a href="#creators-winning">Creators Winning</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#newsletter">Contact Us</a></li>
-                </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars">☰</i>
-                </button>
+                <nav class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="#the-formula">The Formula</a>
+                    <a href="#see-the-work">See the Work</a>
+                    <a href="#creators-winning">Creators Winning</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#newsletter">Contact Us</a>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             </div>
         </div>
     </header>
@@ -1327,11 +1301,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
-            });
+
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const expanded = navLinks.classList.contains('active');
+                    mobileMenuBtn.innerHTML = expanded ? '✕' : '☰';
+                    mobileMenuBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                });
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
             
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
