@@ -3,54 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thrumpton Golden Cod | Glacier Visions</title>
+  <title>Spotlight | Glacier Visions</title>
   <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a href="/" class="brand">
-        <img src="/logo.svg" alt="Glacier Visions logo" />
-        <div><span>Glacier</span> Visions</div>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/#work">Work</a>
-        <a href="/#contact">Contact</a>
-        <a href="/thumbnails/">Thumbnail Design</a>
-      </nav>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-      <a class="back-link" href="/#work">← Back to projects</a>
-    </div>
-  </header>
+<header>
+  <div class="container nav">
+    <a href="/" class="brand">
+      <img src="/logo.svg" alt="Glacier Visions logo" />
+      <div><span>Glacier</span> Visions</div>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#work">Work</a>
+      <a href="/#contact">Contact</a>
+      <a href="/thumbnails/">Thumbnail Design</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+    <a class="back-link" href="/#work">← Back to projects</a>
+  </div>
+</header>
   <main class="project-layout">
     <div class="container">
       <div class="lead-grid">
         <section class="lead">
           <h1 class="headline">Spotlight</h1>
-          <p class="sub">Reimagine a local <em>fish and chip shop</em> through a contemporary brand identity that balances tradition and modern appeal.</p>
-          <p>Thrumpton Golden Cod is a brand identity concept developed to refresh a familiar local business with a clearer, more considered visual language.</p>
-          <p>The result is a cohesive and adaptable identity that modernises the brand without losing its approachable, neighbourhood feel, demonstrating how thoughtful design can elevate everyday local businesses.</p>
+          <p class="sub">Market research and strategic documentation</p>
+          <p>Comprehensive analysis of market dynamics, business propositions, and ecosystem research for strategic planning and informed decision-making.</p>
         </section>
         <aside class="overview">
           <h3>Project Overview</h3>
-          <p class="overview-item"><strong>My role:</strong> Graphic Designer</p>
-          <p class="overview-item"><strong>Date:</strong> 2025</p>
-          <p class="overview-item"><strong>Scope:</strong> Brand Identity, Packaging Design, Environmental Graphics</p>
-          <p class="overview-item"><strong>Deliverables:</strong> Visual Identity System, Packaging, Posters & Signage</p>
+          <p class="overview-item"><strong>My role:</strong> Researcher & Strategist</p>
+          <p class="overview-item"><strong>Date:</strong> 2024-2025</p>
+          <p class="overview-item"><strong>Scope:</strong> Market Research, Business Analysis</p>
+          <p class="overview-item"><strong>Deliverables:</strong> Research Reports & Documentation</p>
         </aside>
       </div>
-      <div class="hero-gallery span-full">
-        <div class="hero-image span-full"><img src="/images/thrumpton-golden-cod/Mockup 1.avif" alt="Thrumpton Golden Cod Visual 1" loading="lazy" /></div>
-        <div class="hero-image span-rows-2"><img src="/images/thrumpton-golden-cod/Mockup 2.avif" alt="Thrumpton Golden Cod Visual 2" loading="lazy" /></div>
-        <div class="hero-image"><img src="/images/thrumpton-golden-cod/Mockup 4.avif" alt="Thrumpton Golden Cod Visual 4" loading="lazy" /></div>
-        <div class="hero-image"><img src="/images/thrumpton-golden-cod/Mockup 5.avif" alt="Thrumpton Golden Cod Visual 5" loading="lazy" /></div>
-        <div class="hero-image span-full"><img src="/images/thrumpton-golden-cod/Mockup 6.avif" alt="Thrumpton Golden Cod Visual 6" loading="lazy" /></div>
-        <div class="hero-image"><img src="/images/thrumpton-golden-cod/Mockup 7.avif" alt="Thrumpton Golden Cod Visual 7" loading="lazy" /></div>
-        <div class="hero-image"><img src="/images/thrumpton-golden-cod/Mockup 8.avif" alt="Thrumpton Golden Cod Visual 8" loading="lazy" /></div>
 
-      </div>
+      <section class="pdf-sections">
+        <div class="pdf-nav">
+          <button class="pdf-pill active" data-pdf="business">Business Proposition</button>
+          <button class="pdf-pill" data-pdf="ecosystem">Ecosystem Analysis</button>
+        </div>
+
+        <div id="pdf-content" class="pdf-content">
+          <!-- Business Proposition PDF -->
+          <div id="business-pdf" class="pdf-section active">
+            <div class="pdf-frame">
+              <iframe
+                src="/pdf.js/web/viewer.html?file=/images/spotlight/Iordache_Andrei_researchreport.pdf#zoom=page-width">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Ecosystem Analysis PDF -->
+          <div id="ecosystem-pdf" class="pdf-section">
+            <div class="pdf-frame">
+              <iframe
+                src="/pdf.js/web/viewer.html?file=/images/spotlight/Iordache_Andrei_ecosystem-analysis.pdf#zoom=page-width">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
   <script>
@@ -63,6 +79,21 @@
         mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
       });
     })();
+
+    // PDF Navigation Pill System
+    document.querySelectorAll('.pdf-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        const pdfType = this.getAttribute('data-pdf');
+
+        // Update active pill
+        document.querySelectorAll('.pdf-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+
+        // Update visible PDF section
+        document.querySelectorAll('.pdf-section').forEach(section => section.classList.remove('active'));
+        document.getElementById(pdfType + '-pdf').classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
