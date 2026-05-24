@@ -314,6 +314,7 @@ h3 { text-shadow: 0 1px 2px rgb(0, 0, 0); }
 .hero-image { background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;   }
 .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-image.pad img { padding-top: 12px; padding-bottom: 12px; }
+.hero-image.shrink img { object-fit: scale-down; }
 
 /* PDF segment control and embed frames for project pages */
 .pdf-sections { margin-top: 26px; }
@@ -324,9 +325,9 @@ h3 { text-shadow: 0 1px 2px rgb(0, 0, 0); }
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
+  margin-left: -50%;
+  margin-right: -50%;
+  width: 100%;
   padding: 12px 4vw;
   box-sizing: border-box;
   justify-content: center; /* center pills across the full width */
