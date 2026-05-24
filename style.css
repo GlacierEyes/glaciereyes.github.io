@@ -402,6 +402,9 @@ h3 { text-shadow: 0 1px 2px rgb(0, 0, 0); }
     object-fit: cover;
     object-position: center center;
   }
+  .project-card.wide[href*="projects/barclays"] img {
+    object-position: left center;
+  }
 }
 /* Lead grid for project pages (replaces inline grid styles) */
 .lead-grid { display: grid; grid-template-columns: 1.25fr .95fr; gap: 48px; align-items: start; margin-bottom: 40px; }
