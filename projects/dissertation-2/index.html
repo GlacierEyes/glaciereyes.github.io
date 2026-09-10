@@ -50,13 +50,12 @@
         <div class="pdf-nav">
           <span class="pdf-pill active">Dissertation PDF</span>
         </div>
-        <div class="pdf-content">
+        <div id="dissertation-pdf" class="pdf-content" data-available-from="2026-09-21">
           <div class="pdf-section active">
-            <div class="pdf-frame">
-              <iframe
-                title="Marketing as a Modern Coup d'État dissertation"
-                src="/pdf.js/web/viewer.html?file=/projects/dissertation-2/Alexandru_Andrei_Iordache_Dissertation_Final.pdf#zoom=page-width">
-              </iframe>
+            <div class="pdf-placeholder">
+              <span class="pdf-placeholder-label">Sheffield Hallam University</span>
+              <h2>Available 21 September 2026</h2>
+              <p>This dissertation will be available after the assessment outcome has been released.</p>
             </div>
           </div>
         </div>
@@ -73,6 +72,14 @@
         navLinks.classList.toggle('active');
         mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
       });
+    })();
+
+    (function(){
+      const pdfContent = document.querySelector('#dissertation-pdf');
+      if (!pdfContent) return;
+      const availableFrom = new Date(`${pdfContent.dataset.availableFrom}T00:00:00`);
+      if (new Date() < availableFrom) return;
+      pdfContent.innerHTML = '<div class="pdf-section active"><div class="pdf-frame"><iframe title="Marketing as a Modern Coup d\'État dissertation" src="/pdf.js/web/viewer.html?file=/projects/dissertation-2/Alexandru_Andrei_Iordache_Dissertation_Final.pdf#zoom=page-width"></iframe></div></div>';
     })();
   </script>
 </body>
