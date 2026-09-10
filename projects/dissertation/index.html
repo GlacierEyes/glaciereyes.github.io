@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An exploration of colour and structure in the interface design of dominant video-sharing platforms such as YouTube." />
+  <title>Colour & Structure | Glacier Visions</title>
+  <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <img src="/logo.svg" alt="Glacier Visions logo" />
+        <div><span>Glacier</span> Visions</div>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+        <a href="/thumbnails/">Thumbnail Design</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <a class="back-link" href="/#work">← Back to projects</a>
+    </div>
+  </header>
+
+  <main class="project-layout">
+    <div class="container">
+      <div class="lead-grid">
+        <section class="lead">
+          <p class="project-kicker">University of Lincoln</p>
+          <h1 class="headline">Colour & Structure</h1>
+          <p class="sub">An exploration of colour and structure as used in the interface design of dominant video sharing platforms such as YouTube.</p>
+          <p>This dissertation investigates how colour and structure work together within the interface design of dominant video-sharing platforms, with YouTube as a central point of reference. It considers how palettes, contrast, hierarchy, spacing and recurring layout patterns organise information and guide users through content-rich digital environments.</p>
+          <p>The research explores how these visual decisions contribute to platform identity and influence the way interfaces feel, communicate and direct attention. By examining the relationship between visual language and user experience, the dissertation considers how familiar interface conventions can make complex systems easier to navigate while also shaping expectations around what users notice, understand and do next.</p>
+        </section>
+        <aside class="overview">
+          <h3>Project Overview</h3>
+          <p class="overview-item"><strong>Institution:</strong> University of Lincoln</p>
+          <p class="overview-item"><strong>Format:</strong> Written dissertation</p>
+          <p class="overview-item"><strong>Focus:</strong> Interface Design, Colour & Structure</p>
+          <p class="overview-item"><strong>Date:</strong> 2025</p>
+          <p class="overview-item"><strong>Deliverable:</strong> Written dissertation</p>
+        </aside>
+      </div>
+
+      <section class="pdf-sections">
+        <div class="pdf-nav">
+          <span class="pdf-pill active">Dissertation PDF</span>
+        </div>
+        <div class="pdf-content">
+          <div class="pdf-section active">
+            <div class="pdf-frame">
+              <iframe
+                title="Dissertation 1 research report"
+                src="/pdf.js/web/viewer.html?file=/projects/dissertation/Iordache_Andrei_GraphicDesign_2025%20%281%29%20%281%29.pdf#zoom=page-width">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      if (!mobileMenuBtn || !navLinks) return;
+      mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+      });
+    })();
+  </script>
+</body>
+</html>

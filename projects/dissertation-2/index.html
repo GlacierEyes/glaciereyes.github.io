@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Marketing as a Modern Coup d'État: a dissertation on electoral influence on TikTok by Alexandru-Andrei Iordache." />
+  <title>Marketing as a Modern Coup d'État | Glacier Visions</title>
+  <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <img src="/logo.svg" alt="Glacier Visions logo" />
+        <div><span>Glacier</span> Visions</div>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+        <a href="/thumbnails/">Thumbnail Design</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <a class="back-link" href="/#work">← Back to projects</a>
+    </div>
+  </header>
+
+  <main class="project-layout">
+    <div class="container">
+      <div class="lead-grid">
+        <section class="lead">
+          <p class="project-kicker">Sheffield Hallam University</p>
+          <h1 class="headline">Modern Coup d'État</h1>
+          <p class="sub">Marketing as a Modern Coup d'État: Developing a Strategic Framework for Analysing Electoral Influence on TikTok.</p>
+          <p>This dissertation examines how political marketing and creator-led communication can shape electoral influence on TikTok, using Romania's 2024 presidential election as a case study. It explores how campaign coordination, influencer guidance and platform-native video can make political messages feel personal, informal and organic rather than like conventional advertising.</p>
+          <p>Through a qualitative analysis of 20 campaign-related TikTok videos, the research examines how ideas about the ideal president were constructed through qualities such as integrity, competence, patriotism and proven action. It also considers indirect candidate framing, dissatisfaction with existing politics, calls for change, audience participation and voting mobilisation. The findings are brought together in a strategic framework for analysing how coordinated political communication may develop into wider audience engagement and potential electoral influence on the platform.</p>
+        </section>
+        <aside class="overview">
+          <h3>Project Overview</h3>
+          <p class="overview-item"><strong>Institution:</strong> Sheffield Hallam University</p>
+          <p class="overview-item"><strong>Format:</strong> Written dissertation</p>
+          <p class="overview-item"><strong>Focus:</strong> Marketing, TikTok & electoral influence</p>
+          <p class="overview-item"><strong>Date:</strong> 2026</p>
+          <p class="overview-item"><strong>Deliverable:</strong> Written dissertation</p>
+        </aside>
+      </div>
+
+      <section class="pdf-sections">
+        <div class="pdf-nav">
+          <span class="pdf-pill active">Dissertation PDF</span>
+        </div>
+        <div class="pdf-content">
+          <div class="pdf-section active">
+            <div class="pdf-frame">
+              <iframe
+                title="Marketing as a Modern Coup d'État dissertation"
+                src="/pdf.js/web/viewer.html?file=/projects/dissertation-2/Alexandru_Andrei_Iordache_Dissertation_Final.pdf#zoom=page-width">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      if (!mobileMenuBtn || !navLinks) return;
+      mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+      });
+    })();
+  </script>
+</body>
+</html>
