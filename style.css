@@ -302,6 +302,7 @@ section { padding: 74px 0; }
   box-shadow: 0 18px 30px rgba(0,0,0,.28) !important;
 }
 .dissertation-card-alt { background: #f1e5d4; }
+.dissertation-2-card { display: none; }
 .dissertation-card-alt .dissertation-art {
   color: #342218;
   background:
